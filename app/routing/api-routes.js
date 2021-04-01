@@ -19,5 +19,5 @@ module.exports = function (app) {
             waitingListData.push(req.body);
             res.json(false);
         }
-    }
+    });
 }
