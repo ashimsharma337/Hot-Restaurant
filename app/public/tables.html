@@ -93,10 +93,40 @@
             }
 
        
-     });
-   }
+        });
+    }
+   function runWaitListQuery() {
+        var currentURL = window.location.origin;
 
+        $.ajax({url: currentURL + "/api/waitlist", method: "GET"})
+        .done(function(waitlistData){
+            
+            console.log("-----------------------------------");
+            console.log("URL: " + currentURL + "/api/tables");
+            console.log(waitlistData);
+            console.log("------------------------------------");
+        
+            for (var i = 0; i<waitlistData.length; i++) {
+                console.log(waitlistData[i]);
+
+                var waitlistSection = $("<div>");
+                waitlistSection.addClass('well');
+                waitlistSection.attr('id', 'waitlistWell-' + i+1);
+                $("#waitList").append(waitlistSection);
+            
+                
+                var tableNumber = i + 1;
+
+                $("#waitlistWell-" + i+1).append('<h2><span class="badge badge-primary">' +
+                    tableNumber + "</span> | " + waitlistData[i].customerID + "</h2>");
+
+            }
+
+       
+        });
+    }
     runTableQuery();
+    runWaitListQuery();
 </script>
 </body>
 
