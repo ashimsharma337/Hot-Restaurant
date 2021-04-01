@@ -60,7 +60,7 @@
               <label for="reserve-unique-id">Unique ID</label>
               <input type="text" class="form-control" id="reserve-unique-id">
             </div>
-            <button type="submit" class="btn btn-primary">Submit</button>
+            <button type="submit" class="btn btn-primary" id="submit">Submit</button>
           </form>
         </div>
       </div>
@@ -77,5 +77,20 @@
     </div>
   </footer>
 </div>
+<script type="text/javascript">
+
+     $("#submit").on("click", function() {
+
+        var newReservation = {
+            customerName: $('#reserve-name').val().trim(),
+            phoneNumber: $('#reserve-phone').val().trim(),
+            customerEmail: $('#reserve-email').val().trim(),
+            customerID: $('#reserve-unique-id').val().trim()
+        };
+
+        console.log(newReservation);
+        return false;
+     });
+</script>
 </body>
 </html>
